@@ -15,7 +15,8 @@ export default class PersonList extends React.Component {
         fetch( '/api/person', {
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.props.token
             }
         } )
             .then( response => response.json() )
@@ -30,11 +31,10 @@ export default class PersonList extends React.Component {
         return (
             <>
                 <h1>Person list</h1>
-
                 {
                     this.state.people.map( person => (
                         <div className="person">{person.name}</div>
-                ))
+                    ) )
                 }
             </>
         )

@@ -35,5 +35,8 @@
         "plugins": [
             "@babel/plugin-proposal-class-properties"
         ]
+    },
+    "dependencies": {
+        "dropzone": "^5.5.1"
     }
 }

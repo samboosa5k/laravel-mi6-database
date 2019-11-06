@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-require('dotenv').config();
+const mix = require( 'laravel-mix' );
+require( 'dotenv' ).config();
 /*
  |-----------------------------------------------------------------------</section><section class="
  noflag">
@@ -12,28 +12,29 @@ require('dotenv').config();
  | file for the application as well as bundling up all the JS files.
  |
  */
- 
-mix.options({
+
+mix.options( {
     processCssUrls: false
-});
- 
-if (!mix.inProduction()) {
-    mix.webpackConfig({
+} );
+
+if ( !mix.inProduction() ) {
+    mix.webpackConfig( {
         devtool: 'source-map'
-    })
-    .sourceMaps()
+    } )
+        .sourceMaps()
 }
- 
-mix.react('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
- 
-    .browserSync({
+
+mix.react( 'resources/js/app.js', 'public/js' )
+    .sass( 'resources/sass/app.scss', 'public/css' )
+    .copy( 'node_modules/dropzone/dist/dropzone.js', 'public/js/vendor/dropzone.js' )
+    .copy( 'node_modules/dropzone/dist/dropzone.css', 'public/css/vendor/dropzone.css' )
+    .browserSync( {
         host: 'localhost',
         port: 3000,
         proxy: {
             target: process.env.APP_URL // Yay! Using APP_URL from the .env file!
         }
-    });
- 
-// add versioning 
+    } );
+
+// add versioning
 mix.version();
